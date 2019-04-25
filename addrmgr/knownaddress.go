@@ -7,7 +7,7 @@ package addrmgr
 import (
 	"time"
 
-	"github.com/btcsuite/btcd/wire"
+	"github.com/Divicoin/btcd/wire"
 )
 
 // KnownAddress tracks information about a known network address that is used
@@ -31,6 +31,11 @@ func (ka *KnownAddress) NetAddress() *wire.NetAddress {
 // LastAttempt returns the last time the known address was attempted.
 func (ka *KnownAddress) LastAttempt() time.Time {
 	return ka.lastattempt
+}
+
+// Services returns the services supported by the peer with the known address.
+func (ka *KnownAddress) Services() wire.ServiceFlag {
+	return ka.na.Services
 }
 
 // chance returns the selection probability for a known address.  The priority
